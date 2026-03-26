@@ -10,6 +10,7 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
+// CYBER CATS LAB TABLE AND COCONUTS
 
 package frc.robot;
 
@@ -178,10 +179,14 @@ public class RobotContainer {
         m_imu = new Imu(SwerveConstants.kImu.factory.get());
 
         m_drivebase = new Drive(m_imu);
-        m_flywheel = new Flywheel(new FlywheelIOSim()); // new Flywheel(new FlywheelIOTalonFX());
+        m_flywheel = new Flywheel(new FlywheelIOTalonFX()); // new Flywheel(new FlywheelIOTalonFX());
         m_vision = new Vision(m_drivebase::addVisionMeasurement, buildVisionIOsReal(m_drivebase));
         m_accel = new Accelerometer(m_imu);
         sweep = null;
+
+
+                defineAutoCommands();
+
         break;
 
       case SIM:
@@ -291,8 +296,7 @@ public class RobotContainer {
     driveStyle.addDefaultOption("TANK", DriveStyle.TANK);
     driveStyle.addOption("GAMER", DriveStyle.GAMER);
 
-    // Define Auto commands
-    defineAutoCommands();
+  
     // Define SysIs Routines
     definesysIdRoutines();
     // Configure the button and trigger bindings
@@ -496,7 +500,7 @@ public class RobotContainer {
   /**
    * Set up the SysID routines from AdvantageKit
    *
-   * <p>NOTE: These are currently only accessible with Constants.AutoType.PATHPLANNER
+   * <p>NOTE: These are currently only accessible with Constants.AutoType.PAgTHPLANNER
    */
   private void definesysIdRoutines() {
     if (Constants.getAutoType() == AutoType.PATHPLANNER) {

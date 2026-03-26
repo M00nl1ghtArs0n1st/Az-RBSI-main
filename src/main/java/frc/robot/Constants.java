@@ -72,8 +72,8 @@ public final class Constants {
   //       via GitHub issues.
   private static SwerveType swerveType = SwerveType.PHOENIX6; // PHOENIX6, YAGSL
   private static CTREPro phoenixPro = CTREPro.UNLICENSED; // LICENSED, UNLICENSED
-  private static AutoType autoType = AutoType.MANUAL; // MANUAL, PATHPLANNER, CHOREO
-  private static VisionType visionType = VisionType.NONE; // PHOTON, LIMELIGHT, NONE
+  private static AutoType autoType = AutoType.PATHPLANNER; // MANUAL, PATHPLANNER, CHOREO
+  private static VisionType visionType = VisionType.LIMELIGHT; // PHOTON, LIMELIGHT, NONE
 
   /** Enumerate the robot types (name your robots here) */
   public static enum RobotType {
@@ -109,34 +109,35 @@ public final class Constants {
   /** Physical Constants for Robot Operation ******************************* */
   public static final class RobotConstants {
 
-    public static final Mass kRobotMass = Pounds.of(100.);
+    public static final Mass kRobotMass = Pounds.of(135.0993);
     public static final Matter kChassis =
         new Matter(new Translation3d(0, 0, Inches.of(8).in(Meters)), kRobotMass.in(Kilograms));
     // Robot moment of intertial; this can be obtained from a CAD model of your drivetrain. Usually,
     // this is between 3 and 8 kg*m^2.
-    public static final double kRobotMOI = 6.8;
+    public static final double kRobotMOI = 6.8; //TEST LATER
 
     // Wheel coefficient of friction
-    public static final double kWheelCOF = 1.2;
+    public static final double kWheelCOF = 1.2;//test?????????
 
     // Maximum torque applied by wheel
     // Kraken X60 stall torque ~7.09 Nm; MK4i L3 gear ratio 6.12:1
-    public static final double kMaxWheelTorque = 43.4; // Nm
+    public static final double kMaxWheelTorque = 43.4; // Nm Mk5N TESTTTTTTTTTTTTTTTTTT
 
     // Insert here the orientation (CCW == +) of the Rio and IMU from the robot
     // An angle of "0." means the x-y-z markings on the device match the robot's intrinsic reference
     //   frame.
     // NOTE: It is assumed that both the Rio and the IMU are mounted such that +Z is UP
+    
     public static final Rotation2d kRioOrientation =
         switch (getRobot()) {
-          case COMPBOT -> Rotation2d.fromDegrees(-90.);
+          case COMPBOT -> Rotation2d.fromDegrees(0.);//flip with this
           case DEVBOT -> Rotation2d.fromDegrees(0.);
           default -> Rotation2d.fromDegrees(0.);
         };
     // IMU can be one of Pigeon2 or NavX
     public static final Rotation2d kIMUOrientation =
         switch (getRobot()) {
-          case COMPBOT -> Rotation2d.fromDegrees(0.);
+          case COMPBOT -> Rotation2d.fromDegrees(0.);//same orientation as roborio
           case DEVBOT -> Rotation2d.fromDegrees(0.);
           default -> Rotation2d.fromDegrees(0.);
         };
@@ -167,7 +168,7 @@ public final class Constants {
     public static final String RIO = "";
     public static final String DRIVE = "DriveTrain";
 
-    public static final String[] ALL = {RIO, DRIVE};
+    public static final String[] ALL = {RIO};
   }
 
   /************************************************************************* */
@@ -256,7 +257,7 @@ public final class Constants {
     public static final int OPERATOR_SWITCH_0 = 8;
     public static final int OPERATOR_SWITCH_1 = 9;
     public static final int OPERATOR_SWITCH_2 = 10;
-    public static final int OPERATOR_SWITCH_3 = 11;
+    public static final int OPERATOR_SWITCH_3 = 11;//BUTTON SWITCH??
     public static final int OPERATOR_SWITCH_4 = 12;
 
     public static final int[] MULTI_TOGGLE = {4, 5};
@@ -323,7 +324,7 @@ public final class Constants {
     public static final double kDriveT =
         SwerveConstants.kDriveGearRatio / DCMotor.getKrakenX60Foc(1).KtNMPerAmp;
     public static final double kSteerP = 400.0;
-    public static final double kSteerD = 20.0;
+    public static final double kSteerD = 20.0;//PID VALUES FROM OG CODE
   }
 
   /************************************************************************* */
